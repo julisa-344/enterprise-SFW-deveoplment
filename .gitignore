@@ -1,0 +1,26 @@
+# Maven build directory
+target/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Compiled class files
+*.class
+
+# Maven wrapper
+.mvn/wrapper/
+
+# Logs
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+
+# Other folders
+.settings/
+.vscode/
