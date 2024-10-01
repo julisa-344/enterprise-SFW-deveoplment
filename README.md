@@ -201,6 +201,9 @@ La imagen que has proporcionado muestra un diagrama que representa la interfaz d
 La imagen que has proporcionado muestra un diagrama que representa la estructura de una arquitectura Modelo-Vista-Controlador (MVC) en el diseño de software. Aquí tienes una descripción detallada considerando el contexto de la empresa familiar que planea abrir una tienda de artículos de oficina y útiles escolares:
 
 
+![alt text](image-2.png)
+
+
 ## Descripción de la Imagen
 
 ### Modelo (Model):
@@ -224,9 +227,6 @@ La imagen que has proporcionado muestra un diagrama que representa la estructura
 
 ### Interacción Modelo-DAO:
 - El modelo interactúa con el DAO para realizar operaciones en la base de datos.
-
-
-![alt text](image-2.png)
 
 
 ### Task: 
