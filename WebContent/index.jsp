@@ -4,10 +4,10 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>EP1, Julisa Leon</title>
 	</head>
 	<body>
-		<h1>Sistema Regalos ERP</h1>
+		<h1>Sistema de gestion de Sucursales</h1>
 		<br>
 		<form action="login" method="POST">
 			<input type="hidden" name="opcionPost" value="validarUsuario">
