@@ -32,7 +32,7 @@ public class SucursalDAO {
             stmt.setString(1, "%" + nombre + "%");
         }
 
-        System.out.println("Executing query: " + stmt.toString());
+        System.out.println("Executing query: " + sentenciaSQL);
 
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
