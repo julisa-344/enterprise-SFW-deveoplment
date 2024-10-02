@@ -81,7 +81,12 @@ public class SucursalController extends HttpServlet {
     private void registrarSucursal(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         String nombre = request.getParameter("nombre");
         String direccion = request.getParameter("direccion");
-        int estado = Integer.parseInt(request.getParameter("estado"));
+        int estado;
+        try {
+            estado = Integer.parseInt(request.getParameter("estado"));
+        } catch (NumberFormatException e) {
+            estado = 0; // Provide a default value
+        }
         Sucursal sucursal = new Sucursal();
         sucursal.setNombre(nombre);
         sucursal.setDireccion(direccion);

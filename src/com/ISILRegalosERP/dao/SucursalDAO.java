@@ -21,9 +21,16 @@ public class SucursalDAO {
 
     public List<Sucursal> buscarSucursales(String nombre) throws SQLException {
         List<Sucursal> listaSucursales = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM Sucursal WHERE nombre LIKE ?";
+        String sentenciaSQL;
+        if (nombre == null || nombre.isEmpty()) {
+            sentenciaSQL = "SELECT * FROM Sucursal";
+        } else {
+            sentenciaSQL = "SELECT * FROM Sucursal WHERE nombre LIKE ?";
+        }
         PreparedStatement stmt = this.conexion.prepareStatement(sentenciaSQL);
-        stmt.setString(1, "%" + nombre + "%");
+        if (nombre != null && !nombre.isEmpty()) {
+            stmt.setString(1, "%" + nombre + "%");
+        }
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Sucursal sucursal = new Sucursal();
@@ -36,6 +43,7 @@ public class SucursalDAO {
         this.conexion.close();
         return listaSucursales;
     }
+
 
     public void registrarSucursal(Sucursal sucursal) throws SQLException {
         String sentenciaSQL = "INSERT INTO Sucursal(nombre, direccion, estado) VALUES (?, ?, ?)";
