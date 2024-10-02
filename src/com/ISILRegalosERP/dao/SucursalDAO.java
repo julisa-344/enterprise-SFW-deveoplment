@@ -6,7 +6,8 @@ import java.util.List;
 import com.ISILRegalosERP.model.Sucursal;
 
 public class SucursalDAO {
-    private String url = "jdbc:sqlserver://localhost:1433;databaseName=miSistemaBD;user=sa;password=sa";
+    private String url = "jdbc:sqlserver://172.17.0.1:1433;databaseName=EP1DAE;user=SA;password=Fabuloso344";
+
     private Connection conexion;
 
     public SucursalDAO() {
