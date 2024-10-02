@@ -31,6 +31,9 @@ public class SucursalDAO {
         if (nombre != null && !nombre.isEmpty()) {
             stmt.setString(1, "%" + nombre + "%");
         }
+
+        System.out.println("Executing query: " + stmt.toString());
+
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Sucursal sucursal = new Sucursal();
