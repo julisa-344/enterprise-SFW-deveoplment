@@ -19,7 +19,7 @@ public class UsuarioDAO {
 	public UsuarioDAO() {
 		/*Definir todo lo necesario para la conexi?n a BD*/
 		/*1. Definir la cadena de conexi?n*/
-		this.url = "jdbc:sqlserver://localhost:1433;databaseName=IsilERPDae1;user=sa;password=sa";
+		this.url = "jdbc:sqlserver://172.17.0.1:1433;databaseName=EP1DAE;user=SA;password=Fabuloso344";
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			this.conexion = DriverManager.getConnection(url);
