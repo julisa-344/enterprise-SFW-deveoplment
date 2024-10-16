@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Editar Usuario</title>
 	</head>
 	<body>
 		<h1>Editar Usuario</h1>

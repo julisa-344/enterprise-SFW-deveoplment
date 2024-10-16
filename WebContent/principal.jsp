@@ -4,14 +4,17 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Bienvenidos al sistema ISIL SOFT S.A.C</title>
 	</head>
 	<body>
-		<h1>Bienvenidos al Sistema Regalos ERP</h1>
+		<h1>Gestion de Sucursales y usuarios</h1>
 		<br><br>
 		<ul>
 			<li><a href="home?opcionGet=mostrarGestionUsuarios">Usuarios</a></li>
-			<li>Clientes</li>
-		</ul>	
+		</ul>
+		<!-- Agregar un link para la ruta /sucursal -->
+		<ul>
+			<li><a href="home?opcionGet=mostrarGestionSucursales">Sucursales</a></li>
+		</ul>
 	</body>
 </html>

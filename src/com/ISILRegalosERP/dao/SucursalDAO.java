@@ -32,9 +32,8 @@ public class SucursalDAO {
             stmt.setString(1, "%" + nombre + "%");
         }
 
-        System.out.println("Executing query: " + sentenciaSQL);
-
         ResultSet rs = stmt.executeQuery();
+
         while (rs.next()) {
             Sucursal sucursal = new Sucursal();
             sucursal.setCodigo(rs.getInt("codigo"));
@@ -47,6 +46,23 @@ public class SucursalDAO {
         return listaSucursales;
     }
 
+    // new method: buscarSucursal(Codigo)
+    public Sucursal buscarSucursal(int codigo) throws SQLException {
+        Sucursal sucursal = new Sucursal();
+        String sentenciaSQL = "SELECT * FROM Sucursal WHERE codigo = ?";
+        PreparedStatement stmt = this.conexion.prepareStatement(sentenciaSQL);
+        stmt.setInt(1, codigo);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            sucursal.setCodigo(rs.getInt("codigo"));
+            sucursal.setNombre(rs.getString("nombre"));
+            sucursal.setDireccion(rs.getString("direccion"));
+            sucursal.setEstado(rs.getInt("estado"));
+        }
+        this.conexion.close();
+        return sucursal;
+    }
+
 
     public void registrarSucursal(Sucursal sucursal) throws SQLException {
         String sentenciaSQL = "INSERT INTO Sucursal(nombre, direccion, estado) VALUES (?, ?, ?)";
@@ -54,6 +70,17 @@ public class SucursalDAO {
         stmt.setString(1, sucursal.getNombre());
         stmt.setString(2, sucursal.getDireccion());
         stmt.setInt(3, sucursal.getEstado());
+        stmt.execute();
+        this.conexion.close();
+    }
+
+    public void actualizarSucursal(Sucursal sucursal) throws SQLException {
+        String sentenciaSQL = "UPDATE Sucursal SET nombre = ?, direccion = ?, estado = ? WHERE codigo = ?";
+        PreparedStatement stmt = this.conexion.prepareStatement(sentenciaSQL);
+        stmt.setString(1, sucursal.getNombre());
+        stmt.setString(2, sucursal.getDireccion());
+        stmt.setInt(3, sucursal.getEstado());
+        stmt.setInt(4, sucursal.getCodigo());
         stmt.execute();
         this.conexion.close();
     }

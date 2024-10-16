@@ -32,6 +32,9 @@ public class SucursalController extends HttpServlet {
                 case "eliminar":
                     eliminarSucursal(request, response);
                     break;
+                case "editar":
+                    mostrarFormularioEditar(request, response);
+                    break;
                 default:
                     listarSucursales(request, response);
                     break;
@@ -62,6 +65,15 @@ public class SucursalController extends HttpServlet {
         response.sendRedirect("sucursal?action=listar");
     }
 
+    private void mostrarFormularioEditar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        SucursalDAO sucursalDAO = new SucursalDAO();
+        Sucursal sucursal = sucursalDAO.buscarSucursal(codigo);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/editarSucursal.jsp");
+        request.setAttribute("sucursal", sucursal);
+        dispatcher.forward(request, response);
+    }
+
     private void listarSucursales(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         SucursalDAO sucursalDAO = new SucursalDAO();
         List<Sucursal> listaSucursales = sucursalDAO.buscarSucursales("");
@@ -71,11 +83,41 @@ public class SucursalController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            registrarSucursal(request, response);
-        } catch (SQLException e) {
-            throw new ServletException(e);
+        // If action is not UPDATE, then it is CREATE
+        String action = request.getParameter("action");
+        if (action.equals("editar")) {
+            try {
+                actualizarSucursal(request, response);
+            } catch (SQLException e) {
+                throw new ServletException(e);
+            }
+        } else {
+            try {
+                registrarSucursal(request, response);
+            } catch (SQLException e) {
+                throw new ServletException(e);
+            }
         }
+    }
+
+    private void actualizarSucursal(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        String nombre = request.getParameter("nombre");
+        String direccion = request.getParameter("direccion");
+        int estado;
+        try {
+            estado = Integer.parseInt(request.getParameter("estado"));
+        } catch (NumberFormatException e) {
+            estado = 0; // Provide a default value
+        }
+        Sucursal sucursal = new Sucursal();
+        sucursal.setCodigo(codigo);
+        sucursal.setNombre(nombre);
+        sucursal.setDireccion(direccion);
+        sucursal.setEstado(estado);
+        SucursalDAO sucursalDAO = new SucursalDAO();
+        sucursalDAO.actualizarSucursal(sucursal);
+        response.sendRedirect("sucursal?action=listar");
     }
 
     private void registrarSucursal(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

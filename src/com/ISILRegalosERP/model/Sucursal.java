@@ -38,4 +38,14 @@ public class Sucursal {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Sucursal{" +
+                "codigo=" + codigo +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", estado=" + estado +
+                '}';
+    }
 }

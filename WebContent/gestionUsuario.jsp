@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Gestion de usuario</title>
 </head>
 <body>
-	<h1>Gestión de Usuarios</h1><br><br>
+	<h1>Gestion de Usuarios</h1><br><br>
 	<form action="usuario" method="GET">
 		<input type="hidden" name="opcionGet" value="buscarUsuario">
 		Correo: <input type="text" name="correo">

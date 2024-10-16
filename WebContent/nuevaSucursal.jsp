@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Nueva Sucursal</h1>
-    <form action="sucursal" method="post">
+    <form action="sucursal?action=crear" method="post">
         <input type="text" name="nombre" placeholder="Nombre">
         <input type="text" name="direccion" placeholder="Dirección">
         <input type="text" name="estado" placeholder="Estado">
