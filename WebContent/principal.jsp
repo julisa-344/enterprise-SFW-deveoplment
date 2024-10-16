@@ -7,7 +7,7 @@
 		<title>Bienvenidos al sistema ISIL SOFT S.A.C</title>
 	</head>
 	<body>
-		<h1>Gestion de Sucursales y usuarios</h1>
+		<h1>Gestión de jefes de Tienda</h1>
 		<br><br>
 		<ul>
 			<li><a href="home?opcionGet=mostrarGestionUsuarios">Usuarios</a></li>
