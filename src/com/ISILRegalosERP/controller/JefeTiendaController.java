@@ -48,9 +48,10 @@ public class JefeTiendaController extends HttpServlet {
     }
 
     private void buscarJefeTienda(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        String nombre = request.getParameter("nombre");
+        String apellidoPaterno = request.getParameter("apellidoPaterno");
+        String apellidoMaterno = request.getParameter("apellidoMaterno");
         JefeTiendaDAO jefeTiendaDAO = new JefeTiendaDAO();
-        List<JefeTienda> listaJefeTienda = jefeTiendaDAO.buscarJefeTienda(nombre);
+        List<JefeTienda> listaJefeTienda = jefeTiendaDAO.buscarJefeTienda(apellidoPaterno, apellidoMaterno);
         request.setAttribute("listaJefeTienda", listaJefeTienda);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/gestionJefeTienda.jsp");
         dispatcher.forward(request, response);
@@ -81,13 +82,13 @@ public class JefeTiendaController extends HttpServlet {
         JefeTiendaDAO jefeTiendaDAO = new JefeTiendaDAO();
         List<JefeTienda> listaJefeTienda = jefeTiendaDAO.buscarJefeTienda(null);
         request.setAttribute("listaJefeTienda", listaJefeTienda);
+        System.out.println(listaJefeTienda + "perro");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/gestionJefeTienda.jsp");
         dispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-
         if (action == null) {
             action = "";
         }

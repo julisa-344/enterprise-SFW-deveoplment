@@ -10,11 +10,12 @@
 <body>
     <h1>Gestión de Jefe de tienda</h1>
     <form action="jefeTienda" method="get">
-        <input type="text" name="nombre" placeholder="Buscar por nombre">
+        <input type="text" name="apellidoPaterno" placeholder="apellidoPaterno">
+        <input type="text" name="apellidoMaterno" placeholder="apellidoMaterno">
         <input type="hidden" name="action" value="buscar">
         <button type="submit">Buscar</button>
     </form>
-    <c:out value="${fn:length(listajefeTienda)}"/> Jefes de tienda encontrados
+    <c:out value="${fn:length(listaJefeTienda)}"/> Jefes de tienda encontrados
     <table border="1">
         <tr>
             <th>ID</th>
@@ -24,12 +25,13 @@
             <th>DNI</th>
             <th>Acciones</th>
         </tr>
-        <c:forEach var="jefeTienda" items="${listajefeTienda}">
+        <c:forEach var="jefeTienda" items="${listaJefeTienda}">
             <tr>
                 <td>${jefeTienda.codigo}</td>
                 <td>${jefeTienda.nombre}</td>
-                <td>${jefeTienda.direccion}</td>
-                <td>${jefeTienda.estado}</td>
+                <td>${jefeTienda.apellidoPaterno}</td>
+                <td>${jefeTienda.apellidoMaterno}</td>
+                <td>${jefeTienda.dni}</td>
                 <td>
                     <a href="jefeTienda?action=editar&codigo=${jefeTienda.codigo}">Editar</a>
                     <a href="jefeTienda?action=eliminar&codigo=${jefeTienda.codigo}">Eliminar</a>
@@ -37,6 +39,6 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="jefeTienda?action=nuevo">Nueva jefeTienda</a>
+    <a href="jefeTienda?action=nuevo">Nuevo</a>
 </body>
 </html>

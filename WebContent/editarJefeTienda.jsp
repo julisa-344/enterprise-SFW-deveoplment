@@ -15,9 +15,10 @@
 		<c:if test= "${mensaje!=null}">
 			<div>${mensaje}</div>
 		</c:if>
-		<form action="usuario" method="POST">
-			<input type="hidden" name="opcionPost" value="actualizar">
-			Codigo: <input type="text" name="correo" value="${jefeTienda.codigo}"><br><br>
+		<form action="jefeTienda" method="POST">
+			<input type="hidden" name="action" value="actualizar">
+			<input type="hidden" name="codigo" value="${jefeTienda.codigo}"><br><br> 
+			<!-- Line above is quite insecure as the ID can be changed to any one and the user perform updates to others buuut well -->
 			Nombre: <input type="text" name="nombre" value="${jefeTienda.nombre}"><br><br>
 			Apellido Paterno: <input type="text" name="apellidoPaterno" value="${jefeTienda.apellidoPaterno}"><br><br>
             Apellido Materno: <input type="text" name="apellidoMaterno" value="${jefeTienda.apellidoMaterno}"><br><br>

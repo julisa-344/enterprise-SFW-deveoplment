@@ -15,8 +15,8 @@
 		<c:if test= "${mensaje!=null}">
 			<div>${mensaje}</div>
 		</c:if>
-		<form action="usuario" method="POST">
-			<input type="hidden" name="opcionPost" value="registrar">
+		<form action="jefeTienda" method="POST">
+			<input type="hidden" name="action" value="registrar">
 			Nombre: <input type="text" name="nombre"><br><br>
 			Apellido Paterno: <input type="text" name="apellidoPaterno"><br><br>
             Apellido Materno: <input type="text" name="apellidoMaterno"><br><br>
