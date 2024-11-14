@@ -5,7 +5,6 @@
 
 ## Java and friends
 
-
 ### Installing java
 
 
